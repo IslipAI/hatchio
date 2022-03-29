@@ -1,0 +1,35 @@
+.studentContainer {
+  display: flex;
+  border-bottom: 1px solid gray;
+}
+
+.studentContainerRight {
+  width: 80vw;
+  text-align: start;
+}
+
+.studentContainerLeft {
+  width: 20vw;
+}
+
+.image {
+  width: 40%;
+  border-radius: 50%;
+  border: 1px solid gray;
+}
+
+.frame {
+  width: 30vw;
+  height: 200px;
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+}
+
+.studentDetails {
+  list-style: none;
+}
+
+.plusicon {
+  width: 2vw;
+}
