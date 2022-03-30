@@ -12,11 +12,14 @@ export default function StudentContainer(props){
 
         if(click){
             document.getElementById(props.id).style.height = "400px";
+            document.getElementById(props.id + "grades").style.display = "block";
         }else{
             document.getElementById(props.id).style.height = "200px";
+            document.getElementById(props.id + "grades").style.display = "none";
         }
     }
 
+    console.log(props.student.grades)
 
     if(typeof props.student == 'undefined'){
         //Do nothing
@@ -38,6 +41,13 @@ export default function StudentContainer(props){
                         <li>Skill: {props.student.skill}</li>
                         <li>Average: {average}</li>
                         <Plus onClick={handleClick} className="plusicon"/>
+                        <div id={props.id + "grades"} className='gradesList'>
+                            {
+                                props.student.grades.map(function(item, x){
+                                    return <li key={x}>{props.student.grades[x]}</li>
+                                })
+                            }
+                        </div>
                     </ul>
                 </div>
             </div>

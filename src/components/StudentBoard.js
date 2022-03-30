@@ -11,7 +11,10 @@ export class StudentBoard extends Component{
             studentdata : [],
             studentdatafiltered: [],
             isloaded: false,
+            searchinput: '',
         };
+
+        this.onChange = this.onChange.bind(this);
     }
 
 
@@ -20,8 +23,27 @@ export class StudentBoard extends Component{
         this.render();
     }
 
-    onChange(){
-        console.log("Changing")
+    onChange(event){
+        console.log(event.target.value)
+        const searchinput = event.target.value.toLowerCase();
+        this.setState({ searchinput }, () => this.filterList());
+    }
+
+    filterList(){
+        let datafilter = this.state.studentdata;
+        let searchinput = this.state.searchinput
+
+        datafilter = datafilter.filter(function(user){
+            console.log(user.firstName)
+            return user.firstName.toLowerCase().indexOf(searchinput) != -1;
+        });
+
+        console.log(datafilter);
+
+        this.setState({
+            studentdatafiltered: datafilter,
+        });
+
     }
 
     getStudentData(){
