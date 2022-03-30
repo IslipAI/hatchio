@@ -9,6 +9,7 @@ export class StudentBoard extends Component{
         super(props);
         this.state = {
             studentdata : [],
+            studentdatafiltered: [],
             isloaded: false,
         };
     }
@@ -19,16 +20,22 @@ export class StudentBoard extends Component{
         this.render();
     }
 
+    onChange(){
+        console.log("Changing")
+    }
+
     getStudentData(){
        fetch('https://api.hatchways.io/assessment/students')
         .then(response => response.json())
         .then(async data => {
             this.setState({
                 studentdata: data.students,
+                studentdatafiltered: data.students,
                 isloaded: true,
             });
         });
     }
+
 
     render(){
         const isloaded = this.state.isloaded;
@@ -42,10 +49,10 @@ export class StudentBoard extends Component{
         }else {
             return (
                 <div>
-                    <input input="text" placeholder="Search by name" className="studentSearch"/>
+                    <input input="text" placeholder="Search by name" className="studentSearch" onChange={this.onChange}/>
                     {
-                        this.state.studentdata.map(function(item, x){
-                            return <StudentContainer key={x} student={item}/>
+                        this.state.studentdatafiltered.map(function(item, x){
+                            return <StudentContainer key={x} student={item} id={x}/>
                         })
                     }
                 </div>

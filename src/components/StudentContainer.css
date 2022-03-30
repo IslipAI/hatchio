@@ -1,11 +1,13 @@
 .studentContainer {
   display: flex;
   border-bottom: 1px solid gray;
+  height: 200px;
 }
 
 .studentContainerRight {
   width: 80vw;
   text-align: start;
+  position: relative;
 }
 
 .studentContainerLeft {
@@ -13,7 +15,7 @@
 }
 
 .image {
-  width: 40%;
+  width: 35%;
   border-radius: 50%;
   border: 1px solid gray;
 }
@@ -32,4 +34,7 @@
 
 .plusicon {
   width: 2vw;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
